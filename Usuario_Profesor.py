@@ -1,6 +1,8 @@
 from Matriz_Notas import Matriz_Notas
 
 class Profesor:
+
+    
     def inicioSesion_profesor(self, apellido_profesor):
         materias = {
             "NARCISO PÉREZ": {
@@ -20,7 +22,7 @@ class Profesor:
         }
 
         if apellido_profesor in materias:
-            print("Seleccione una de las siguientes materias:")
+            print("\nSeleccione una de las siguientes materias:")
             for opcion, materia in materias[apellido_profesor].items():
                 print(f"{opcion}. {materia}")
             opcion_materia = int(input("Ingrese la opción seleccionada: "))
@@ -69,7 +71,7 @@ class Profesor:
                     matriz_notas.calcular_promedio()
                     matriz_notas.obtener_condicion()
 
-                    print("¡\n>>>>>>>>>>>> ALUMNOS Y NOTAS GUARDADOS CON ÉXITO! <<<<<<<<<<<<<")
+                    print("\n>>>>>>>>>>>> ¡ALUMNOS Y NOTAS GUARDADOS CON ÉXITO! <<<<<<<<<<<<<")
                     opcion = 0
 
                 elif opcion == 2:
@@ -102,6 +104,3 @@ class Profesor:
             if respuesta.lower() != "s":
                 volver_al_menu = False
 
-
-profesor = Profesor()
-profesor.menu_opciones_profesor("PABLO GIRIBALDI")
