@@ -4,6 +4,8 @@ class Profesor:
 
     
     def inicioSesion_profesor(self, apellido_profesor):
+        # asignacion de issue
+        print("")
         materias = {
             "NARCISO PÉREZ": {
                 1: "Elementos de Matemáticas y Lógica",
