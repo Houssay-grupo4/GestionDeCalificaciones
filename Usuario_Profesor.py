@@ -24,7 +24,7 @@ class Profesor:
         }
 
         if apellido_profesor in materias:
-            print("\nSeleccione una de las siguientes materias:")
+            print("Seleccione una de las siguientes materias:")
             for opcion, materia in materias[apellido_profesor].items():
                 print(f"{opcion}. {materia}")
             opcion_materia = int(input("Ingrese la opción seleccionada: "))
