@@ -1,7 +1,6 @@
 import Usuario_Profesor
 import Usuario_Preceptor
 import Usuario_Alumno
-
 roles = ['PROFESOR', 'PRECEPTOR', 'ALUMNO', 'DIRECTIVO', 'ADMINISTRADOR']
 
 usuarios_Profesor = {
