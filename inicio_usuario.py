@@ -1,6 +1,6 @@
 import Usuario_Profesor
 import Usuario_Preceptor
-#import Usuario_Alumno_Nuevo
+import Usuario_Alumno
 
 roles = ['PROFESOR', 'PRECEPTOR', 'ALUMNO', 'DIRECTIVO', 'ADMINISTRADOR']
 
@@ -69,12 +69,10 @@ if nombre in usuarios[rol_elegido] and usuarios[rol_elegido][nombre] == contrase
         preceptor.menu_opciones_preceptor()
     elif rol_elegido == 'PROFESOR':
         profesor = Usuario_Profesor.Profesor()
-        profesor.menu_opciones_profesor(nombre)
+        profesor.menu_opciones_profesor()
     elif rol_elegido == 'ALUMNO':
-        # Código para opciones de alumno
-        pass
-    elif rol_elegido == 'PRECEPTOR':
-        # Código para opciones de preceptor
+        alumno = Usuario_Alumno.Alumno
+        alumno.menu_opciones_alumno
         pass
     elif rol_elegido == 'DIRECTIVO':
         # Código para opciones de directivo
