@@ -54,6 +54,3 @@ class Preceptor:
             else:
                 print("Opción inválida.")
 
-# Código de prueba
-#preceptor = Preceptor("David", "4444")
-#preceptor.menu_opciones_preceptor()
