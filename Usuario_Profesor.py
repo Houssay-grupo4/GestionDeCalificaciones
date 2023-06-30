@@ -71,7 +71,7 @@ class Profesor:
 
         while True:
 
-            print("Materias disponibles:")
+            print("\nMaterias disponibles:")
             for i, materia in enumerate(self.materias, start=1):
                 print(f"{i}. {materia}")
 

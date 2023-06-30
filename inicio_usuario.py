@@ -70,8 +70,8 @@ if nombre in usuarios[rol_elegido] and usuarios[rol_elegido][nombre] == contrase
         profesor = Usuario_Profesor.Profesor()
         profesor.menu_opciones_profesor()
     elif rol_elegido == 'ALUMNO':
-        alumno = Usuario_Alumno.Alumno
-        alumno.menu_opciones_alumno
+        alumno = Usuario_Alumno.Alumno()
+        alumno.menu_opciones_alumno()
         pass
     elif rol_elegido == 'DIRECTIVO':
         # Código para opciones de directivo
