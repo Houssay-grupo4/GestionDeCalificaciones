@@ -1,5 +1,6 @@
 import Usuario_Profesor
-#import Usuario_Alumno_Nuevo
+import Usuario_Preceptor
+import Usuario_Alumno
 
 roles = ['PROFESOR', 'PRECEPTOR', 'ALUMNO', 'DIRECTIVO', 'ADMINISTRADOR']
 
@@ -62,15 +63,16 @@ while opcion_rol not in range(1, len(roles) + 1) or nombre not in usuarios[rol_e
 
 if nombre in usuarios[rol_elegido] and usuarios[rol_elegido][nombre] == contraseña:
     print(f'\n******************* BIENVENIDO {nombre} COMO {rol_elegido}*******************')
-
-    if rol_elegido == 'PROFESOR':
+    
+    if rol_elegido == 'PRECEPTOR' and nombre == 'DAVID' and contraseña == '4444':
+        preceptor = Usuario_Preceptor.Preceptor(nombre, contraseña)
+        preceptor.menu_opciones_preceptor()
+    elif rol_elegido == 'PROFESOR':
         profesor = Usuario_Profesor.Profesor()
-        profesor.menu_opciones_profesor(nombre)
+        profesor.menu_opciones_profesor()
     elif rol_elegido == 'ALUMNO':
-        # Código para opciones de alumno
-        pass
-    elif rol_elegido == 'PRECEPTOR':
-        # Código para opciones de preceptor
+        alumno = Usuario_Alumno.Alumno
+        alumno.menu_opciones_alumno
         pass
     elif rol_elegido == 'DIRECTIVO':
         # Código para opciones de directivo
