@@ -1,6 +1,5 @@
-import Usuario_Profesor
-import Usuario_Preceptor
-import Usuario_Alumno
+
+print("********** BIENVENIDO AL SISTEMA DE GESTION DE ESTUDIANTES **********")
 roles = ['PROFESOR', 'PRECEPTOR', 'ALUMNO', 'DIRECTIVO', 'ADMINISTRADOR']
 
 usuarios_Profesor = {
@@ -18,7 +17,7 @@ usuarios_Alumno = {
     'MAYKA RAMIREZ': '1111',
     'CHIARA SECO': '2222',
     'PAZ SANTANGELO':'3333',
-    'CACHO SANTANGELO': '4444',
+    'ALEJANDRO SANTANGELO': '4444',
 }
 usuario_Directivo ={
     'CRISTINA': '1111',
@@ -28,7 +27,7 @@ usuario_Administrador = {
 
     'CHIARA SECO': '2222',
     'PAZ SANTANGELO':'3333',
-    'CACHO SANTANGELO': '4444',
+    'ALEJANDRO SANTANGELO': '4444',
 }
 
 usuarios = {
@@ -63,19 +62,29 @@ while opcion_rol not in range(1, len(roles) + 1) or nombre not in usuarios[rol_e
 if nombre in usuarios[rol_elegido] and usuarios[rol_elegido][nombre] == contraseña:
     print(f'\n******************* BIENVENIDO {nombre} COMO {rol_elegido}*******************')
     
-    if rol_elegido == 'PRECEPTOR' and nombre == 'DAVID' and contraseña == '4444':
+    if rol_elegido == 'PRECEPTOR':
+        import Usuario_preceptor
         preceptor = Usuario_Preceptor.Preceptor(nombre, contraseña)
         preceptor.menu_opciones_preceptor()
     elif rol_elegido == 'PROFESOR':
+        import Usuario_Profesor
         profesor = Usuario_Profesor.Profesor()
         profesor.menu_opciones_profesor()
     elif rol_elegido == 'ALUMNO':
+        import Usuario_Alumno
         alumno = Usuario_Alumno.Alumno()
         alumno.menu_opciones_alumno()
         pass
     elif rol_elegido == 'DIRECTIVO':
-        # Código para opciones de directivo
+        import Usuario_Directivo
+        directivo = Usuario_Directivo.Directivo()
+        directivo.iniciar_sesion()
+        directivo.menu_opciones_directivo()
         pass
     elif rol_elegido == 'ADMINISTRADOR':
-        # Código para opciones de administrador
+        import Usuario_Administrador
+        administrador = Usuario_Administrador(nombre, contraseña)
+        administrador.menu_opciones_administrador()
         pass
+        
+       
