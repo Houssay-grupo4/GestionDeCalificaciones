@@ -35,9 +35,6 @@ class Directivo:
             print("Opción inválida. Por favor, seleccione una opción válida.")
             self.menu_opciones_directivo()
 
-directivo = Directivo()
-directivo.menu_opciones_directivo()
-
 
 
 

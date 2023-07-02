@@ -78,7 +78,7 @@ if nombre in usuarios[rol_elegido] and usuarios[rol_elegido][nombre] == contrase
     elif rol_elegido == 'DIRECTIVO':
         import Usuario_Directivo
         directivo = Usuario_Directivo.Directivo()
-        directivo.iniciar_sesion()
+        ##directivo.iniciar_sesion()
         directivo.menu_opciones_directivo()
         pass
     elif rol_elegido == 'ADMINISTRADOR':
