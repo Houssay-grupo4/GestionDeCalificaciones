@@ -63,7 +63,7 @@ if nombre in usuarios[rol_elegido] and usuarios[rol_elegido][nombre] == contrase
     print(f'\n******************* BIENVENIDO {nombre} COMO {rol_elegido}*******************')
     
     if rol_elegido == 'PRECEPTOR':
-        import Usuario_preceptor
+        import Usuario_Preceptor
         preceptor = Usuario_Preceptor.Preceptor(nombre, contraseña)
         preceptor.menu_opciones_preceptor()
     elif rol_elegido == 'PROFESOR':
