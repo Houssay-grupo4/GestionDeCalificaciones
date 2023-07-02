@@ -1,3 +1,5 @@
+
+import sys
 from notas_diccionario import materias
 
 class Preceptor:
@@ -54,3 +56,18 @@ class Preceptor:
             else:
                 print("Opción inválida.")
 
+def inicio_usuario():
+    roles = ['PRECEPTOR']
+
+    usuarios_preceptor = {
+        'DAVID': '4444',
+        'SABINO': '1111',
+    }
+
+    nombre = 'DAVID'  # Nombre del usuario validado
+    contraseña = usuarios_preceptor[nombre]  # Contraseña correspondiente al usuario
+
+    preceptor = Preceptor(nombre, contraseña)
+    preceptor.menu_opciones_preceptor()
+
+inicio_usuario()
