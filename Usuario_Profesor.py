@@ -1,22 +1,18 @@
-from notas_diccionario import materias
+import notas_diccionario
 
 class Profesor:
     def __init__(self):
         self.materias = []
-
-    def agregar_materia(self, materia):
-        self.materias.append(materia)
 
     def verificar_materias(self):
         return self.materias
 
     def ver_notas(self, materia):
         if materia in self.materias:
-            for alumno in materias[materia]:
-                nombre = list(alumno.keys())[0]
-                notas = alumno["notas"]
-                promedio = sum(notas) / len(notas)
-                print(f"Alumno: {nombre}")
+            for alumno, info in notas_diccionario.materias[materia].items():
+                notas = info.get("notas", [])
+                promedio = sum(notas) / len(notas) if notas else 0
+                print(f"Alumno: {alumno}")
                 print(f"Notas: {notas}")
                 print(f"Promedio: {promedio}")
                 print()
@@ -25,9 +21,10 @@ class Profesor:
 
     def modificar_nota(self, materia, alumno, nueva_nota):
         if materia in self.materias:
-            for i, alumno_info in enumerate(materias[materia]):
-                if alumno_info[list(alumno_info.keys())[0]] == alumno:
-                    alumno_info["notas"] = nueva_nota
+            for materia_info in notas_diccionario.materias[materia]:
+                nombre_alumno = list(materia_info.keys())[0]
+                if alumno.lower() in nombre_alumno.lower():
+                    materia_info[nombre_alumno]["notas"] = [nueva_nota]
                     print("Nota modificada con éxito.")
                     break
             else:
@@ -37,27 +34,31 @@ class Profesor:
 
     def agregar_nota(self, materia, alumno, nueva_nota):
         if materia in self.materias:
-            for alumno_info in materias[materia]:
-                if alumno_info[list(alumno_info.keys())[0]] == alumno:
-                    alumno_info["notas"].append(nueva_nota)
+            materia_info = notas_diccionario.materias[materia]
+            for alumno_info in materia_info:
+                if alumno_info.lower() == alumno.lower():
+                    materia_info[alumno_info]["notas"].append(nueva_nota)
                     print("Nota agregada con éxito.")
-                    break
-            else:
-                print("El alumno no se encuentra en la lista.")
+                    return
+            print("El alumno no se encuentra en la lista.")
         else:
             print("No tienes acceso a esta materia.")
 
-    def agregar_alumno(self, materia, alumno, notas):
+    def agregar_alumno(self, materia, alumno):
         if materia in self.materias:
-            nuevo_alumno = {alumno: "Alumno " + str(len(materias[materia])+1), "notas": notas}
-            materias[materia].append(nuevo_alumno)
-            print("Alumno agregado con éxito.")
+            if alumno in notas_diccionario.materias[materia]:
+                print("El alumno ya existe en la lista.")
+            else:
+                notas_diccionario.materias[materia][alumno] = {"notas": []}
+                print("Alumno agregado con éxito.")
         else:
             print("No tienes acceso a esta materia.")
+
+
 
     def ingresar_nombre(self):
         nombre = input("Ingrese su nombre como profesor: ")
-        self.materias = profesores.get(nombre.lower(), [])
+        self.materias = notas_diccionario.profesores.get(nombre.lower(), [])
 
         if not self.materias:
             print("No se encontraron materias asignadas a este profesor.")
@@ -105,13 +106,7 @@ class Profesor:
                 self.agregar_nota(materia_seleccionada, alumno, nueva_nota)
             elif opcion == 4:
                 alumno = input("Ingrese el nombre del alumno: ")
-                notas = []
-                while True:
-                    nota = input("Ingrese una nota (ingrese 'fin' para finalizar): ")
-                    if nota.lower() == "fin":
-                        break
-                    notas.append(float(nota))
-                self.agregar_alumno(materia_seleccionada, alumno, notas)
+                self.agregar_alumno(materia_seleccionada, alumno)
             elif opcion == 5:
                 continue
             elif opcion == 6:
@@ -120,13 +115,7 @@ class Profesor:
             else:
                 print("Opción inválida.")
 
-# Diccionario de profesores y sus materias
-profesores = {
-    "pablo giribaldi": ["Programación I", "Base de Datos"],
-    "narciso pérez": ["Sistemas y Organizaciones", "Elementos de Matemática y Lógica"],
-    "david": ["Aproximación al Mundo del Trabajo"],
-    "antonio sciangula": ["Competencias Comunicacionales I"]
-}
+
 
 
 

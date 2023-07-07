@@ -1,5 +1,3 @@
-
-import sys
 from notas_diccionario import materias
 
 class Preceptor:
@@ -27,11 +25,10 @@ class Preceptor:
             print(f"Notas de la materia: {self.materia_seleccionada}")
             alumnos = self.materias[self.materia_seleccionada]
 
-            for alumno in alumnos:
-                nombre = list(alumno.keys())[0]
-                notas = alumno["notas"]
-                promedio = sum(notas) / len(notas)
-                print(f"Alumno: {nombre}")
+            for alumno, info in alumnos.items():
+                notas = info.get("notas", [])
+                promedio = sum(notas) / len(notas) if notas else 0
+                print(f"Alumno: {alumno}")
                 print(f"Notas: {notas}")
                 print(f"Promedio: {promedio}")
                 print()
@@ -57,14 +54,12 @@ class Preceptor:
                 print("Opción inválida.")
 
 def inicio_usuario():
-    roles = ['PRECEPTOR']
-
     usuarios_preceptor = {
         'DAVID': '4444',
         'SABINO': '1111',
     }
 
-    nombre = 'DAVID'  # Nombre del usuario validado
+    nombre = 'DAVID'  # Nombre del usuario validado 
     contraseña = usuarios_preceptor[nombre]  # Contraseña correspondiente al usuario
 
     preceptor = Preceptor(nombre, contraseña)

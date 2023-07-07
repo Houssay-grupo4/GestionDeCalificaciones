@@ -4,33 +4,9 @@ class Alumno:
     def __init__(self):
         self.materias = materias
 
-    def verificar_alumno(self, materia_elegida, nombre_usuario):
-        if nombre_usuario is not None:
-            if materia_elegida in self.materias:
-                alumnos = self.materias[materia_elegida]
-                for alumno in alumnos:
-                    nombre_alumno = list(alumno.keys())[0]
-                    if nombre_alumno.lower() == nombre_usuario.lower():
-                        notas = alumno.get("notas")
-                        if notas:
-                            promedio = sum(notas) / len(notas)
-                            print(f"Notas de la materia: {materia_elegida}")
-                            print(f"Alumno: {nombre_alumno}")
-                            print(f"Notas: {notas}")
-                            print(f"Promedio: {promedio}")
-                        else:
-                            print("El alumno no tiene notas registradas para esta materia.")
-                        return
-                print("El alumno no tiene notas registradas para esta materia.")
-                return
-            else:
-                print("Materia inválida. Por favor, seleccione una materia válida.")
-        else:
-            print("Nombre de usuario no especificado.")
-
     def menu_opciones_alumno(self):
         nombre_usuario = input("Ingrese su nombre: ")
-        
+
         while True:
             print("\nSeleccione una opción:")
             print("1. Seleccionar materia y ver tus notas")
@@ -53,7 +29,22 @@ class Alumno:
             else:
                 print("Opción inválida. Por favor, seleccione una opción válida.")
 
-
-
-
-
+    def verificar_alumno(self, materia_elegida, nombre_usuario):
+        if nombre_usuario is not None:
+            if materia_elegida in self.materias:
+                alumnos = self.materias[materia_elegida]
+                for alumno in alumnos:
+                    if alumno.lower() == nombre_usuario.lower():
+                        notas = alumnos[alumno].get("notas")
+                        if notas:
+                            promedio = sum(notas) / len(notas)
+                            print(f"Notas de la materia: {materia_elegida}")
+                            print(f"Alumno: {alumno.capitalize()}")
+                            print(f"Notas: {notas}")
+                            print(f"Promedio: {promedio}")
+                            return
+                print("El alumno no tiene notas registradas para esta materia.")
+            else:
+                print("Materia inválida. Por favor, seleccione una materia válida.")
+        else:
+            print("Nombre de usuario no especificado.")
